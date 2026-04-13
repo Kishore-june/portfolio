@@ -28,14 +28,16 @@ app.get('/api/health', (req, res) => {
   healthHandler(req, res);
 });
 
-// For chat.js (ESM - using dynamic import)
+// For chat.js (CommonJS)
+const chatHandler = require('./api/chat.js');
 app.post('/api/chat', async (req, res) => {
   try {
-    const chatModule = await import('./api/chat.js');
-    chatModule.default(req, res);
+    await chatHandler(req, res);
   } catch (err) {
     console.error('Chat error:', err);
-    res.status(500).json({ success: false, error: 'Internal server error' });
+    if (!res.headersSent) {
+      res.status(500).json({ success: false, error: 'Internal server error' });
+    }
   }
 });
 

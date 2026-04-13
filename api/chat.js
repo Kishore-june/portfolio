@@ -13,7 +13,7 @@ About Kishore:
 - Open to: Full Stack, ML, or hybrid roles — internships, full-time, freelance. Available immediately.
 - Contact: Use the contact form on this page, or LinkedIn: linkedin.com/in/kishore-sakthi`;
 
-export default async function handler(req, res) {
+module.exports = async function handler(req, res) {
   // CORS
   res.setHeader('Access-Control-Allow-Origin', '*');
   res.setHeader('Access-Control-Allow-Methods', 'POST, OPTIONS');
