@@ -1,0 +1,578 @@
+<!DOCTYPE html>
+<html lang="en" data-theme="dark">
+<head>
+<meta charset="UTF-8"/>
+<meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+<meta name="description" content="Kishore S — Full Stack Developer, ML Engineer & UI/UX Designer from Chennai. 90% ML accuracy. Open to work."/>
+<meta name="keywords" content="Kishore S, Full Stack Developer, ML Engineer, UI/UX Designer, React, Django, TensorFlow, Python, Chennai"/>
+<meta name="author" content="Kishore S"/>
+<meta name="robots" content="index, follow"/>
+<meta property="og:title" content="Kishore S — Hybrid Engineer"/>
+<meta property="og:description" content="Full Stack Dev + ML Engineer + UI/UX Designer. Open to work."/>
+<meta property="og:type" content="website"/>
+<meta name="twitter:card" content="summary_large_image"/>
+<link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>👨‍💻</text></svg>"/>
+<title>Kishore S | Full Stack · ML Engineer · UI/UX Designer</title>
+<link rel="preconnect" href="https://fonts.googleapis.com"/>
+<link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&family=JetBrains+Mono:wght@400;500;600&display=swap" rel="stylesheet"/>
+<link rel="stylesheet" href="styles.css"/>
+<style>
+/* ── HERO FIX: "Hybrid Engineer" text never clips ── */
+.h-name{line-height:1.05!important;overflow:visible!important;padding-bottom:4px}
+.h-name .grad{display:block;line-height:1.15;padding-bottom:2px;margin-bottom:0}
+@media(max-width:480px){.h-name{font-size:2.3rem!important;letter-spacing:-1px!important}}
+
+/* ── GITHUB: hide stats row ── */
+#gh-stats-row{display:none}
+/* Repo cards: simpler style */
+.repo-card{display:block;background:var(--card);border:1px solid var(--border);border-radius:10px;padding:18px 20px;text-decoration:none;transition:var(--tr)}
+.repo-card:hover{border-color:rgba(var(--accent-rgb),.35);transform:translateY(-3px)}
+.repo-name{font-weight:700;font-size:.9rem;color:var(--accent);margin-bottom:7px;font-family:'JetBrains Mono',monospace}
+.repo-desc{font-size:.82rem;color:var(--text2);line-height:1.6}
+
+/* ── BLOG MODAL content ── */
+.blog-content p{font-size:.9rem;color:var(--text2);line-height:1.85;margin-bottom:14px}
+.blog-content h4{font-size:.95rem;font-weight:700;color:var(--heading);margin:20px 0 8px}
+.blog-content ol,.blog-content ul{padding-left:20px;margin-bottom:14px}
+.blog-content li{font-size:.88rem;color:var(--text2);line-height:1.7;margin-bottom:6px}
+.blog-content code{background:var(--card2);padding:2px 7px;border-radius:4px;font-family:'JetBrains Mono',monospace;font-size:.82rem;color:var(--accent)}
+.blog-content b{color:var(--heading)}
+
+/* ── TOAST ── */
+.ks-toast{
+  position:fixed;bottom:90px;left:50%;transform:translateX(-50%) translateY(16px);
+  z-index:9990;display:flex;align-items:center;gap:10px;
+  padding:13px 20px;border-radius:12px;font-size:.86rem;font-weight:600;
+  font-family:'Plus Jakarta Sans',sans-serif;max-width:90vw;width:max-content;
+  box-shadow:0 8px 32px rgba(0,0,0,.4);opacity:0;
+  transition:opacity .3s ease,transform .3s ease;pointer-events:none;
+}
+.ks-toast.show{opacity:1;transform:translateX(-50%) translateY(0)}
+.ks-toast-success{background:#0a2218;border:1px solid #34d399;color:#34d399}
+.ks-toast-error  {background:#220a14;border:1px solid #f472b6;color:#f472b6}
+@media(max-width:600px){.ks-toast{bottom:96px;font-size:.8rem;padding:11px 16px}}
+
+/* ── CONTACT ICONS (SVG) ── */
+.ct-icon-svg{width:36px;height:36px;border-radius:9px;background:rgba(var(--accent-rgb),.07);border:1px solid rgba(var(--accent-rgb),.14);display:flex;align-items:center;justify-content:center;flex-shrink:0}
+.ct-icon-svg svg{width:18px;height:18px}
+
+/* ── PHONE REVEAL ── */
+.reveal-ph-btn{
+  display:inline-flex;align-items:center;gap:7px;
+  padding:8px 16px;border-radius:8px;
+  background:rgba(var(--accent-rgb),.07);border:1px solid rgba(var(--accent-rgb),.22);
+  color:var(--accent);font-size:.82rem;font-weight:600;cursor:pointer;
+  transition:var(--tr);font-family:inherit;
+}
+.reveal-ph-btn:hover{background:rgba(var(--accent-rgb),.15);border-color:var(--accent)}
+
+/* ── CURSOR mobile fix ── */
+@media(hover:none){#cur,#cur-r{display:none!important}}
+</style>
+</head>
+<body>
+
+<!-- PRELOADER -->
+<div id="preloader">
+  <div class="pl-name">Kishore S</div>
+  <div class="pl-bar"><div class="pl-fill"></div></div>
+  <div class="pl-sub">Hybrid Engineer · Loading</div>
+</div>
+
+<!-- CURSOR -->
+<div id="cur"></div><div id="cur-r"></div>
+
+<!-- HEADER -->
+<header id="hdr">
+  <a href="#hero" class="logo">KS<em>.</em></a>
+  <ul class="nav-ul">
+    <li><a href="#about">About</a></li>
+    <li><a href="#skills">Skills</a></li>
+    <li><a href="#experience">Experience</a></li>
+    <li><a href="#github-s">GitHub</a></li>
+    <li><a href="#projects">Projects</a></li>
+    <li><a href="#blog">Blog</a></li>
+    <li><a href="#contact">Contact</a></li>
+  </ul>
+  <div class="h-actions">
+    <div class="open-pill"><div class="open-dot"></div>Open to Work</div>
+    <button class="icon-btn" id="themeBtn" title="Toggle theme" aria-label="Toggle theme">🌙</button>
+    <button class="ham" id="ham" aria-label="Open menu" aria-expanded="false">☰</button>
+  </div>
+</header>
+<nav class="mob-nav" id="mobNav" aria-label="Mobile navigation">
+  <a href="#about">About</a><a href="#skills">Skills</a>
+  <a href="#experience">Experience</a><a href="#github-s">GitHub</a>
+  <a href="#projects">Projects</a><a href="#blog">Blog</a><a href="#contact">Contact</a>
+</nav>
+
+<!-- HERO — "Hybrid Engineer" text-clip fixed -->
+<section id="hero">
+  <div class="hero-bg"></div><div class="hero-grid"></div>
+  <div class="wrap">
+    <div class="hero-c">
+      <div class="h-pill">📍 Chennai, India · Available for Opportunities</div>
+      <h1 class="h-name">Kishore S<br><span class="grad">Hybrid Engineer</span></h1>
+      <div class="h-chips">
+        <span class="h-chip c1">Full Stack Dev</span>
+        <span class="h-chip c2">ML Engineer</span>
+        <span class="h-chip c3">UI/UX Designer</span>
+        <span class="h-chip">90% ML Accuracy</span>
+      </div>
+      <p class="h-desc">I build AI-powered full stack applications with obsessive attention to design. A rare hybrid combining deep learning, production web systems, and user-centered craft — all in one person.</p>
+      <div class="h-btns">
+        <a href="#projects" class="btn btn-p">View My Work →</a>
+        <!-- RESUME: drop resume.pdf into /public/ folder -->
+        <a href="/public/resume.pdf" download="Kishore_S_Resume.pdf" class="btn btn-o resume-dl" aria-label="Download Resume PDF">⬇ Resume</a>
+        <a href="#contact" class="btn btn-o">Let's Talk</a>
+      </div>
+      <div class="h-stats rev">
+        <div class="stat"><div class="stat-n" id="cnt-proj">6<s>+</s></div><div class="stat-l">Projects</div></div>
+        <div class="stat"><div class="stat-n" id="cnt-int">3<s>+</s></div><div class="stat-l">Internships</div></div>
+        <div class="stat"><div class="stat-n" id="cnt-ml">90<s>%</s></div><div class="stat-l">ML Accuracy</div></div>
+        <div class="stat"><div class="stat-n" id="cnt-cgpa">8.5</div><div class="stat-l">CGPA</div></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ABOUT -->
+<section id="about">
+  <div class="wrap">
+    <div class="eyebrow rev">About Me</div>
+    <div class="sec-h rev d1">The person behind<br>the <em>code.</em></div>
+    <div class="about-g">
+      <div class="about-text rev d2">
+        <p>I'm an entry-level <strong>Full Stack Developer, ML Engineer, and UI/UX Designer</strong> — a rare hybrid most freshers simply don't have. My passion is building intelligent, user-centered applications that solve real problems.</p>
+        <p>What makes me different: I can design the interface in <strong>Figma</strong>, build the <strong>React frontend</strong>, wire up a <strong>Django or Flask backend</strong>, and train a machine learning model — all within the same project, all to production quality.</p>
+        <p>My accounting background at Raven &amp; Co gave me something most developers lack: genuine <strong>business intuition</strong>. I understand data not just technically, but contextually.</p>
+        <div class="str-grid">
+          <div class="str-p">💻 Full Stack Dev</div>
+          <div class="str-p">🤖 AI / ML Engineer</div>
+          <div class="str-p">🎨 UI/UX Design</div>
+          <div class="str-p">📊 Data Analytics</div>
+          <div class="str-p">🧪 Performance Testing</div>
+          <div class="str-p">📐 System Thinking</div>
+        </div>
+      </div>
+      <div class="about-cards rev d3">
+        <div class="info-c">
+          <div class="ic-h">Education</div>
+          <div class="edu-i">
+            <div class="edu-d">M.Sc. Information Technology</div>
+            <div class="edu-s">D.G. Vaishnav College, Chennai</div>
+            <div class="edu-m"><span class="tag-xs">Expected Apr 2026</span><span class="tag-xs g">CGPA 8.5</span></div>
+          </div>
+          <div class="edu-i">
+            <div class="edu-d">B.Sc. Computer Science</div>
+            <div class="edu-s">C. Kandaswami Naidu College</div>
+            <div class="edu-m"><span class="tag-xs">2023</span><span class="tag-xs g">CGPA 7.8</span></div>
+          </div>
+        </div>
+        <div class="info-c">
+          <div class="ic-h">Achievements</div>
+          <div class="ach-i"><div class="ach-ic">🥇</div><div><div class="ach-t">1st Prize — Technical Seminar</div><div class="ach-s">Cloud Applications &amp; DeepFake Technology · 2025</div></div></div>
+          <div class="ach-i"><div class="ach-ic">🥈</div><div><div class="ach-t">2nd Prize — Graphical Design</div><div class="ach-s">Design Competition · 2025</div></div></div>
+          <div class="ach-i"><div class="ach-ic">✅</div><div><div class="ach-t">3 Internships Completed</div><div class="ach-s">UI/UX · Dev &amp; Testing · Accounting</div></div></div>
+          <div class="ach-i"><div class="ach-ic">🚀</div><div><div class="ach-t">5+ End-to-End Projects</div><div class="ach-s">ML · Web · Data · Utilities</div></div></div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- TERMINAL -->
+<section id="terminal-s">
+  <div class="wrap">
+    <div class="term-w rev">
+      <div class="term-bar">
+        <div class="td tr"></div><div class="td ty"></div><div class="td tg"></div>
+        <span class="t-ttl">kishore@hybrid-engineer ~ bash</span>
+      </div>
+      <div class="term-b">
+        <span class="tl"><span class="tp">kishore@portfolio:~$</span> <span class="tc">whoami</span></span>
+        <span class="tl tgr">Kishore S — Full Stack Developer · ML Engineer · UI/UX Designer</span>
+        <span class="tl"> </span>
+        <span class="tl"><span class="tp">kishore@portfolio:~$</span> <span class="tc">cat skills.json | python -m json.tool</span></span>
+        <span class="tl tcy">{</span>
+        <span class="tl tcy">  "frontend": ["React","HTML5","CSS3","Bootstrap"],</span>
+        <span class="tl tcy">  "backend":  ["Django","Flask","REST APIs","SQLite"],</span>
+        <span class="tl tcy">  "ml_ai":    ["TensorFlow","Keras","OpenCV","MobileNet"],</span>
+        <span class="tl tcy">  "design":   ["Figma","Framer","Wireframing"],</span>
+        <span class="tl tcy">  "data":     ["Power BI","DAX","SQL","Power Query"]</span>
+        <span class="tl tcy">}</span>
+        <span class="tl"> </span>
+        <span class="tl"><span class="tp">kishore@portfolio:~$</span> <span class="tc">python run_model.py --mode=eval</span></span>
+        <span class="tl to">Loading MobileNet weights... ✓</span>
+        <span class="tl to">Running inference on 500 samples...</span>
+        <span class="tl tgr">✓ Accuracy: 90.2%  |  Loss: 0.312  |  F1: 0.89</span>
+        <span class="tl"> </span>
+        <span class="tl"><span class="tp">kishore@portfolio:~$</span> <span class="tcur"></span></span>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- SKILLS -->
+<section id="skills">
+  <div class="wrap">
+    <div class="eyebrow rev">Technical Skills</div>
+    <div class="sec-h rev d1">A full-spectrum <em>toolkit.</em></div>
+    <div class="sk-grid">
+      <div class="sk-card rev d1">
+        <div class="sk-cat">Languages</div>
+        <div class="sk-pills"><span class="sp h">Python</span><span class="sp">JavaScript</span><span class="sp">Java</span><span class="sp">SQL</span></div>
+        <div class="prog-i"><div class="prog-r"><span class="prog-n">Python</span><span class="prog-p">88%</span></div><div class="prog-b"><div class="prog-f" data-w="88"></div></div></div>
+        <div class="prog-i"><div class="prog-r"><span class="prog-n">JavaScript</span><span class="prog-p">78%</span></div><div class="prog-b"><div class="prog-f" data-w="78"></div></div></div>
+        <div class="prog-i"><div class="prog-r"><span class="prog-n">Java</span><span class="prog-p">65%</span></div><div class="prog-b"><div class="prog-f" data-w="65"></div></div></div>
+      </div>
+      <div class="sk-card rev d2">
+        <div class="sk-cat">Frontend</div>
+        <div class="sk-pills"><span class="sp h">React</span><span class="sp">HTML5</span><span class="sp">CSS3</span><span class="sp">Bootstrap</span><span class="sp">Responsive</span></div>
+        <div class="prog-i"><div class="prog-r"><span class="prog-n">React</span><span class="prog-p">80%</span></div><div class="prog-b"><div class="prog-f" data-w="80"></div></div></div>
+        <div class="prog-i"><div class="prog-r"><span class="prog-n">HTML / CSS</span><span class="prog-p">92%</span></div><div class="prog-b"><div class="prog-f" data-w="92"></div></div></div>
+      </div>
+      <div class="sk-card rev d3">
+        <div class="sk-cat">Backend &amp; DB</div>
+        <div class="sk-pills"><span class="sp h">Django</span><span class="sp">Flask</span><span class="sp">REST APIs</span><span class="sp">MySQL</span><span class="sp">SQLite</span></div>
+        <div class="prog-i"><div class="prog-r"><span class="prog-n">Django</span><span class="prog-p">82%</span></div><div class="prog-b"><div class="prog-f" data-w="82"></div></div></div>
+        <div class="prog-i"><div class="prog-r"><span class="prog-n">Flask</span><span class="prog-p">75%</span></div><div class="prog-b"><div class="prog-f" data-w="75"></div></div></div>
+      </div>
+      <div class="sk-card rev d4">
+        <div class="sk-cat">ML / AI</div>
+        <div class="sk-pills"><span class="sp h">TensorFlow</span><span class="sp h">Keras</span><span class="sp">OpenCV</span><span class="sp">MobileNet</span><span class="sp">Transfer Learning</span></div>
+        <div class="prog-i"><div class="prog-r"><span class="prog-n">TensorFlow / Keras</span><span class="prog-p">80%</span></div><div class="prog-b"><div class="prog-f" data-w="80"></div></div></div>
+        <div class="prog-i"><div class="prog-r"><span class="prog-n">OpenCV</span><span class="prog-p">72%</span></div><div class="prog-b"><div class="prog-f" data-w="72"></div></div></div>
+      </div>
+      <div class="sk-card rev d1">
+        <div class="sk-cat">Design &amp; Data</div>
+        <div class="sk-pills"><span class="sp h">Figma</span><span class="sp">Framer</span><span class="sp">Power BI</span><span class="sp">DAX</span><span class="sp">Power Query</span></div>
+        <div class="prog-i"><div class="prog-r"><span class="prog-n">Figma</span><span class="prog-p">85%</span></div><div class="prog-b"><div class="prog-f" data-w="85"></div></div></div>
+        <div class="prog-i"><div class="prog-r"><span class="prog-n">Power BI</span><span class="prog-p">78%</span></div><div class="prog-b"><div class="prog-f" data-w="78"></div></div></div>
+      </div>
+      <div class="sk-card rev d2">
+        <div class="sk-cat">Tools &amp; Testing</div>
+        <div class="sk-pills"><span class="sp">Git &amp; GitHub</span><span class="sp">Postman</span><span class="sp">Apache JMeter</span><span class="sp">VS Code</span><span class="sp">PyCharm</span></div>
+        <div class="prog-i"><div class="prog-r"><span class="prog-n">Git &amp; GitHub</span><span class="prog-p">82%</span></div><div class="prog-b"><div class="prog-f" data-w="82"></div></div></div>
+        <div class="prog-i"><div class="prog-r"><span class="prog-n">API Testing</span><span class="prog-p">76%</span></div><div class="prog-b"><div class="prog-f" data-w="76"></div></div></div>
+      </div>
+    </div>
+    <div class="all-sk rev">
+      <div class="all-lbl">All Technologies</div>
+      <div class="all-cloud">
+        <span class="ac">Python</span><span class="ac">JavaScript</span><span class="ac">Java</span><span class="ac">SQL</span><span class="ac">React</span><span class="ac">HTML5</span><span class="ac">CSS3</span><span class="ac">Bootstrap</span><span class="ac">Django</span><span class="ac">Flask</span><span class="ac">REST APIs</span><span class="ac">TensorFlow</span><span class="ac">Keras</span><span class="ac">OpenCV</span><span class="ac">MobileNet</span><span class="ac">Transfer Learning</span><span class="ac">Figma</span><span class="ac">Framer</span><span class="ac">Power BI</span><span class="ac">DAX</span><span class="ac">Power Query</span><span class="ac">MySQL</span><span class="ac">SQLite</span><span class="ac">Git</span><span class="ac">GitHub</span><span class="ac">JMeter</span><span class="ac">Postman</span><span class="ac">VS Code</span><span class="ac">PyCharm</span>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- EXPERIENCE -->
+<section id="experience">
+  <div class="wrap">
+    <div class="eyebrow rev">Experience</div>
+    <div class="sec-h rev d1">Building real things<br>in the <em>real world.</em></div>
+    <div class="tl-w">
+      <div class="tl-i rev d1"><div class="tl-dot"></div>
+        <div class="tl-date">Feb 2025 – Mar 2025 · Remote · 2 months</div>
+        <div class="tl-role">UI/UX Design Intern</div>
+        <div class="tl-co">BLS 360</div>
+        <p class="tl-desc">Redesigned 5+ web pages to improve user engagement and UX consistency. Delivered wireframes, high-fidelity mockups, and production-ready UI layouts using Figma.</p>
+        <div class="tl-tags"><span class="tl-tag">Figma</span><span class="tl-tag">Wireframing</span><span class="tl-tag">Prototyping</span><span class="tl-tag">UI Redesign</span><span class="tl-tag">UX Research</span></div>
+      </div>
+      <div class="tl-i rev d2"><div class="tl-dot"></div>
+        <div class="tl-date">Jan 2025 – Feb 2025 · Remote · 2 months</div>
+        <div class="tl-role">Developer Intern — Testing &amp; UI</div>
+        <div class="tl-co">J.AI</div>
+        <p class="tl-desc">Conducted performance and load testing with Apache JMeter, designed UI mockups for redesign projects, and maintained technical documentation.</p>
+        <div class="tl-tags"><span class="tl-tag">Apache JMeter</span><span class="tl-tag">Performance Testing</span><span class="tl-tag">UI Mockups</span><span class="tl-tag">Documentation</span><span class="tl-tag">SDLC</span></div>
+      </div>
+      <div class="tl-i rev d3"><div class="tl-dot"></div>
+        <div class="tl-date">Apr 2024 – Dec 2024 · Chennai · 8 months</div>
+        <div class="tl-role">Junior Accountant</div>
+        <div class="tl-co">Raven &amp; Co</div>
+        <p class="tl-desc">Managed financial records using Tally ERP and Excel. Developed meticulous attention to detail — a skill that now informs how I architect data-driven applications.</p>
+        <div class="tl-tags"><span class="tl-tag">Tally ERP</span><span class="tl-tag">Excel</span><span class="tl-tag">Data Accuracy</span><span class="tl-tag">Financial Analysis</span></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- GITHUB — stats hidden, only name + desc -->
+<section id="github-s">
+  <div class="wrap">
+    <div class="eyebrow rev">GitHub Activity</div>
+    <div class="sec-h rev d1">Live from <em>github.com/Kishore-June</em></div>
+    <div class="gh-profile rev d2" id="gh-profile">
+      <div class="gh-avatar" id="gh-avatar">K</div>
+      <div style="flex:1">
+        <div class="gh-name" id="gh-name">Kishore S</div>
+        <div class="gh-handle">github.com/Kishore-June</div>
+        <div class="gh-bio" id="gh-bio">Full Stack Developer · ML Engineer · UI/UX Designer</div>
+        <!-- stats row hidden via CSS #gh-stats-row -->
+        <div id="gh-stats-row"></div>
+      </div>
+    </div>
+    <div class="gh-repos-grid rev d3" id="gh-repos-grid">
+      <div class="gh-loading">Fetching repositories…</div>
+    </div>
+  </div>
+</section>
+
+<!-- PROJECTS — GitHub + Case Study only, no Demo/Live -->
+<section id="projects">
+  <div class="wrap">
+    <div class="eyebrow rev">Projects</div>
+    <div class="sec-h rev d1">Work that <em>speaks</em><br>for itself.</div>
+    <div class="pf-row rev d2">
+      <button class="fb active" data-f="all">All</button>
+      <button class="fb" data-f="ml">Machine Learning</button>
+      <button class="fb" data-f="web">Web Dev</button>
+      <button class="fb" data-f="data">Data Analytics</button>
+      <button class="fb" data-f="utility">Utilities</button>
+    </div>
+    <div class="pj-grid">
+      <div class="pj-card rev d1" data-c="ml">
+        <div class="pj-top">
+          <div class="pj-hr"><div class="pj-cat">Machine Learning · CV</div><span class="pj-badge a">⚡ Star Project</span></div>
+          <div class="pj-title">Sign Language Detection System</div>
+          <p class="pj-desc">Real-time sign language recognition achieving 90% accuracy using MobileNet transfer learning with a custom preprocessing pipeline.</p>
+          <div class="pj-tech"><span class="tt">Python</span><span class="tt">TensorFlow</span><span class="tt">Keras</span><span class="tt">OpenCV</span><span class="tt">MobileNet</span></div>
+        </div>
+        <div class="pj-ft">
+          <div class="pj-links">
+            <a href="https://github.com/Kishore-June" target="_blank" rel="noopener noreferrer" class="pl p">GitHub</a>
+          </div>
+          <button class="cs-btn" onclick="openModal('sl')" aria-label="Read case study">Case Study →</button>
+        </div>
+      </div>
+      <div class="pj-card rev d2" data-c="data">
+        <div class="pj-top">
+          <div class="pj-hr"><div class="pj-cat">Data Analytics · Power BI</div><span class="pj-badge c">10+ Visuals</span></div>
+          <div class="pj-title">Netflix Analytics Dashboard</div>
+          <p class="pj-desc">Interactive Power BI dashboard with ETL via Power Query, 10+ cross-filtered visualizations, and complex DAX calculations.</p>
+          <div class="pj-tech"><span class="tt">Power BI</span><span class="tt">SQL</span><span class="tt">DAX</span><span class="tt">Power Query</span></div>
+        </div>
+        <div class="pj-ft">
+          <div class="pj-links">
+            <a href="https://github.com/Kishore-June" target="_blank" rel="noopener noreferrer" class="pl p">GitHub</a>
+          </div>
+          <button class="cs-btn" onclick="openModal('nf')" aria-label="Read case study">Case Study →</button>
+        </div>
+      </div>
+      <div class="pj-card rev d3" data-c="web">
+        <div class="pj-top">
+          <div class="pj-hr"><div class="pj-cat">Web Dev · Full Stack</div><span class="pj-badge b">REST API</span></div>
+          <div class="pj-title">Django Chat Application</div>
+          <p class="pj-desc">Full-stack chat interface with REST API endpoints, GET/POST handling, JSON data exchange, and responsive frontend.</p>
+          <div class="pj-tech"><span class="tt">Django</span><span class="tt">JavaScript</span><span class="tt">REST APIs</span><span class="tt">SQLite</span></div>
+        </div>
+        <div class="pj-ft">
+          <div class="pj-links">
+            <a href="https://github.com/Kishore-June" target="_blank" rel="noopener noreferrer" class="pl p">GitHub</a>
+          </div>
+          <button class="cs-btn" onclick="openModal('ch')" aria-label="Read case study">Case Study →</button>
+        </div>
+      </div>
+      <div class="pj-card rev d4" data-c="web">
+        <div class="pj-top">
+          <div class="pj-hr"><div class="pj-cat">Web Dev · JavaScript</div><span class="pj-badge b">CRUD</span></div>
+          <div class="pj-title">To-Do List Application</div>
+          <p class="pj-desc">Task management app with full CRUD operations, local storage persistence, and clean responsive design.</p>
+          <div class="pj-tech"><span class="tt">JavaScript</span><span class="tt">HTML5</span><span class="tt">CSS3</span></div>
+        </div>
+        <div class="pj-ft">
+          <div class="pj-links">
+            <a href="https://github.com/Kishore-June" target="_blank" rel="noopener noreferrer" class="pl p">GitHub</a>
+          </div>
+        </div>
+      </div>
+      <div class="pj-card rev d1" data-c="utility">
+        <div class="pj-top">
+          <div class="pj-hr"><div class="pj-cat">Utility · Python</div><span class="pj-badge b">Tool</span></div>
+          <div class="pj-title">DOCX → PDF Converter</div>
+          <p class="pj-desc">Python utility for batch document format conversion with clean error handling and CLI interface.</p>
+          <div class="pj-tech"><span class="tt">Python</span></div>
+        </div>
+        <div class="pj-ft">
+          <div class="pj-links">
+            <a href="https://github.com/Kishore-June" target="_blank" rel="noopener noreferrer" class="pl p">GitHub</a>
+          </div>
+        </div>
+      </div>
+      <div class="pj-card rev d2" data-c="utility">
+        <div class="pj-top">
+          <div class="pj-hr"><div class="pj-cat">Academic Tool · Java</div><span class="pj-badge b">App</span></div>
+          <div class="pj-title">Java CGPA Calculator</div>
+          <p class="pj-desc">Java application to simplify grade tracking and CGPA calculation for university students.</p>
+          <div class="pj-tech"><span class="tt">Java</span></div>
+        </div>
+        <div class="pj-ft">
+          <div class="pj-links">
+            <a href="https://github.com/Kishore-June" target="_blank" rel="noopener noreferrer" class="pl p">GitHub</a>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- SHARED MODAL (case studies + blog) -->
+<div id="overlay" role="dialog" aria-modal="true" aria-label="Content">
+  <div class="modal" id="modal-c">
+    <button class="m-close" onclick="closeModal()" aria-label="Close">✕</button>
+    <div id="modal-body"></div>
+  </div>
+</div>
+
+<!-- BLOG — "Read" opens modal with full content -->
+<section id="blog">
+  <div class="wrap">
+    <div class="eyebrow rev">Blog / Learning</div>
+    <div class="sec-h rev d1">Thinking out loud<br>about <em>AI &amp; code.</em></div>
+    <div class="bl-grid">
+      <div class="bl-card rev d1" onclick="openBlog('b1')" role="button" tabindex="0" aria-label="Read blog post 1" onkeydown="if(event.key==='Enter')openBlog('b1')">
+        <div class="bl-tag">Machine Learning</div>
+        <div class="bl-title">How I Built a Sign Language Detector with 90% Accuracy</div>
+        <div class="bl-exc">A deep dive into transfer learning with MobileNet — architecture decisions, data preprocessing challenges, and how I went from 65% to 90% in three iterations.</div>
+        <div class="bl-meta"><span>5 min read · June 2025</span><span class="bl-read">Read →</span></div>
+      </div>
+      <div class="bl-card rev d2" onclick="openBlog('b2')" role="button" tabindex="0" aria-label="Read blog post 2" onkeydown="if(event.key==='Enter')openBlog('b2')">
+        <div class="bl-tag">Deep Learning</div>
+        <div class="bl-title">What I Learned Building a CNN from Scratch</div>
+        <div class="bl-exc">CNNs aren't magic — they're geometry. Here's what building one taught me about feature maps, pooling, and why transfer learning wins every time.</div>
+        <div class="bl-meta"><span>4 min read · May 2025</span><span class="bl-read">Read →</span></div>
+      </div>
+      <div class="bl-card rev d3" onclick="openBlog('b3')" role="button" tabindex="0" aria-label="Read blog post 3" onkeydown="if(event.key==='Enter')openBlog('b3')">
+        <div class="bl-tag">Full Stack</div>
+        <div class="bl-title">Django REST APIs: What Nobody Tells You</div>
+        <div class="bl-exc">After building my first full-stack app, here are the gaps I had to fill myself — serializers, CORS headaches, and ViewSet vs APIView explained clearly.</div>
+        <div class="bl-meta"><span>6 min read · Apr 2025</span><span class="bl-read">Read →</span></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- CONTACT — SVG icons, mailto link, hidden phone, "Request Contact" -->
+<section id="contact">
+  <div class="wrap">
+    <div class="eyebrow rev">Contact</div>
+    <div class="sec-h rev d1">Let's build something <em>great.</em></div>
+    <div class="ct-grid">
+      <div class="rev d2">
+        <h3 style="font-size:1.4rem;font-weight:800;color:var(--heading);margin-bottom:12px">Open to roles, collabs, and interesting problems.</h3>
+        <p style="font-size:.88rem;color:var(--text2);line-height:1.82;margin-bottom:24px">Whether you have a project, opportunity, or just want to talk tech — I'm genuinely interested.</p>
+        <div class="ct-list">
+
+          <!-- EMAIL: shows "Click to send email", opens mail client -->
+          <a href="mailto:kishore.sakthi1806@gmail.com?subject=Portfolio Inquiry" class="ct-item" aria-label="Send email to Kishore">
+            <div class="ct-icon-svg">
+              <!-- LinkedIn SVG -->
+              <svg viewBox="0 0 24 24" fill="currentColor" style="color:var(--accent)"><path d="M20 4H4c-1.1 0-2 .9-2 2v12c0 1.1.9 2 2 2h16c1.1 0 2-.9 2-2V6c0-1.1-.9-2-2-2zm0 4l-8 5-8-5V6l8 5 8-5v2z"/></svg>
+            </div>
+            <div class="ct-inf">
+              <div class="ct-lbl">Email</div>
+              <div class="ct-val">Click to send email →</div>
+            </div>
+          </a>
+
+          <!-- LINKEDIN SVG icon -->
+          <a href="https://linkedin.com/in/kishore-sakthi" target="_blank" rel="noopener noreferrer" class="ct-item" aria-label="LinkedIn profile">
+            <div class="ct-icon-svg">
+              <svg viewBox="0 0 24 24" fill="currentColor" style="color:#0A66C2"><path d="M20.447 20.452h-3.554v-5.569c0-1.328-.027-3.037-1.852-3.037-1.853 0-2.136 1.445-2.136 2.939v5.667H9.351V9h3.414v1.561h.046c.477-.9 1.637-1.85 3.37-1.85 3.601 0 4.267 2.37 4.267 5.455v6.286zM5.337 7.433a2.062 2.062 0 01-2.063-2.065 2.064 2.064 0 112.063 2.065zm1.782 13.019H3.555V9h3.564v11.452zM22.225 0H1.771C.792 0 0 .774 0 1.729v20.542C0 23.227.792 24 1.771 24h20.451C23.2 24 24 23.227 24 22.271V1.729C24 .774 23.2 0 22.225 0z"/></svg>
+            </div>
+            <div class="ct-inf">
+              <div class="ct-lbl">LinkedIn</div>
+              <div class="ct-val">linkedin.com/in/kishore-sakthi</div>
+            </div>
+            <div class="ct-arr">→</div>
+          </a>
+
+          <!-- GITHUB SVG icon -->
+          <a href="https://github.com/Kishore-June" target="_blank" rel="noopener noreferrer" class="ct-item" aria-label="GitHub profile">
+            <div class="ct-icon-svg">
+              <svg viewBox="0 0 24 24" fill="currentColor" style="color:var(--text)"><path d="M12 0C5.374 0 0 5.373 0 12c0 5.302 3.438 9.8 8.207 11.387.599.111.793-.261.793-.577v-2.234c-3.338.726-4.033-1.416-4.033-1.416-.546-1.387-1.333-1.756-1.333-1.756-1.089-.745.083-.729.083-.729 1.205.084 1.839 1.237 1.839 1.237 1.07 1.834 2.807 1.304 3.492.997.107-.775.418-1.305.762-1.604-2.665-.305-5.467-1.334-5.467-5.931 0-1.311.469-2.381 1.236-3.221-.124-.303-.535-1.524.117-3.176 0 0 1.008-.322 3.301 1.23A11.509 11.509 0 0112 5.803c1.02.005 2.047.138 3.006.404 2.291-1.552 3.297-1.23 3.297-1.23.653 1.653.242 2.874.118 3.176.77.84 1.235 1.911 1.235 3.221 0 4.609-2.807 5.624-5.479 5.921.43.372.823 1.102.823 2.222v3.293c0 .319.192.694.801.576C20.566 21.797 24 17.3 24 12c0-6.627-5.373-12-12-12z"/></svg>
+            </div>
+            <div class="ct-inf">
+              <div class="ct-lbl">GitHub</div>
+              <div class="ct-val">github.com/Kishore-June</div>
+            </div>
+            <div class="ct-arr">→</div>
+          </a>
+
+          <!-- PHONE: hidden, "Request Contact" — user submits form, Kishore replies with number -->
+          <div class="ct-item" style="cursor:default">
+            <div class="ct-icon-svg">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" style="color:var(--accent)"><path d="M22 16.92v3a2 2 0 01-2.18 2 19.79 19.79 0 01-8.63-3.07A19.5 19.5 0 013 4.18a2 2 0 012-2.18h3a2 2 0 012 1.72c.127.96.361 1.903.7 2.81a2 2 0 01-.45 2.11L9.09 9a16 16 0 006.91 6.91l1.27-1.27a2 2 0 012.11-.45c.907.339 1.85.573 2.81.7A2 2 0 0122 16.92z"/></svg>
+            </div>
+            <div class="ct-inf">
+              <div class="ct-lbl">Phone</div>
+              <div id="phone-val">
+                <button class="reveal-ph-btn" onclick="revealPhone()" aria-label="Reveal phone number">
+                  📞 Request Contact
+                </button>
+              </div>
+            </div>
+          </div>
+
+        </div>
+      </div>
+
+      <!-- CONTACT FORM -->
+      <div class="ct-form-card rev d3">
+        <div class="ft">Send a Message</div>
+        <div class="fs">I'll reply within 24 hours. All fields required.</div>
+        <div class="fld">
+          <label for="fn">Name</label>
+          <input type="text" id="fn" placeholder="Your Name" autocomplete="name" aria-label="Name"/>
+          <div class="em" id="en">Please enter your name.</div>
+        </div>
+        <div class="fld">
+          <label for="fe">Email</label>
+          <input type="email" id="fe" placeholder="you@example.com" autocomplete="email" aria-label="Email"/>
+          <div class="em" id="ee">Please enter a valid email address.</div>
+        </div>
+        <div class="fld">
+          <label for="fm">Message</label>
+          <textarea id="fm" rows="4" placeholder="Tell me about your project or opportunity…" aria-label="Message"></textarea>
+          <div class="em" id="em">Message must be at least 10 characters.</div>
+        </div>
+        <button class="sub-btn" id="sub-btn" onclick="submitForm()">Send Message</button>
+        <div class="f-status" id="fstat" role="status" aria-live="polite"></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<footer>
+  <div class="f-l">Designed &amp; built by <strong>Kishore S</strong> · Chennai, India · 2025</div>
+  <div class="f-r">Full Stack · ML · UI/UX · Open to Work</div>
+</footer>
+
+<!-- AI CHATBOT — keyword-based + OpenRouter if available -->
+<button id="chat-fab" onclick="toggleChat()" aria-label="Open AI assistant" aria-expanded="false" title="Ask me about Kishore">🤖</button>
+<div id="chatbot" role="dialog" aria-label="Portfolio AI">
+  <div class="ch-hd">
+    <div class="ch-av">🤖</div>
+    <div>
+      <div class="ch-nm">Portfolio Assistant</div>
+      <div class="ch-sb">● Ask me anything about Kishore</div>
+    </div>
+  </div>
+  <div class="ch-msgs" id="ch-msgs">
+    <div class="msg bot">👋 Hi! Ask me about Kishore's skills, projects, experience, or how to hire him. Try typing "python" or "ML project"!</div>
+  </div>
+  <div class="ch-quick" id="ch-quick">
+    <button class="qb" onclick="qa('python')">Python?</button>
+    <button class="qb" onclick="qa('sign language project')">ML project?</button>
+    <button class="qb" onclick="qa('open to work')">Open to work?</button>
+    <button class="qb" onclick="qa('internship experience')">Experience?</button>
+  </div>
+  <div class="ch-inp-r">
+    <input class="ch-inp" id="ch-inp" placeholder="Ask about Kishore…" onkeydown="if(event.key==='Enter')sendMsg()" aria-label="Chat input"/>
+    <button class="ch-send" onclick="sendMsg()" aria-label="Send">➤</button>
+  </div>
+</div>
+
+<script src="script.js" defer></script>
+</body>
+</html>

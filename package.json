@@ -1,0 +1,17 @@
+{
+  "name": "kishore-portfolio",
+  "version": "2.0.0",
+  "description": "Portfolio of Kishore S",
+  "engines": {
+    "node": ">=18.x"
+  },
+  "main": "server.js",
+  "scripts": {
+    "start": "node server.js"
+  },
+  "dependencies": {
+    "dotenv": "^17.4.1",
+    "express": "^5.2.1",
+    "nodemailer": "^6.9.7"
+  }
+}

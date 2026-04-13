@@ -1,0 +1,70 @@
+/*
+ * CSS PATCH — append these rules to styles.css
+ * Fix 3: Header collision between 900px–1100px
+ * Fix 5: Breakpoint optimisation for tablets
+ *
+ * These rules OVERRIDE existing @media(max-width:900px) rules.
+ * Add them at the very END of styles.css so they take precedence.
+ */
+
+/* ── FIX: Hide nav links and show hamburger at 1080px ───── */
+@media (max-width: 1080px) {
+  /* Hide desktop nav links and status pill */
+  .nav-ul,
+  .open-pill {
+    display: none !important;
+  }
+
+  /* Show hamburger */
+  .ham {
+    display: flex !important;
+  }
+
+  /* Tighten header padding so logo + actions don't collide */
+  header {
+    padding: 0 20px;
+  }
+
+  /* Ensure h-actions stays together */
+  .h-actions {
+    gap: 8px;
+    flex-shrink: 0;
+  }
+}
+
+/* ── FIX: Tablet layout adjustments (600–1080px) ─────────── */
+@media (max-width: 1080px) and (min-width: 601px) {
+  section {
+    padding: 80px 32px;
+  }
+
+  .h-stats {
+    grid-template-columns: repeat(2, 1fr);
+  }
+
+  .about-g {
+    grid-template-columns: 1fr;
+    gap: 40px;
+  }
+
+  .ct-grid {
+    grid-template-columns: 1fr;
+    gap: 32px;
+  }
+
+  .pj-grid {
+    grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+  }
+}
+
+/* ── Keep existing 900px rules but don't let them re-show nav */
+@media (max-width: 900px) {
+  .nav-ul,
+  .open-pill {
+    display: none !important;
+  }
+
+  .ham {
+    display: flex !important;
+  }
+}
