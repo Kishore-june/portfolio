@@ -13,7 +13,7 @@ About Kishore:
 - Open to: Full Stack, ML, or hybrid roles — internships, full-time, freelance. Available immediately.
 - Contact: Use the contact form on this page, or LinkedIn: linkedin.com/in/kishore-sakthi`;
 
-module.exports = async function handler(req, res) {
+async function handler(req, res) {
   // CORS
   res.setHeader('Access-Control-Allow-Origin', '*');
   res.setHeader('Access-Control-Allow-Methods', 'POST, OPTIONS');
@@ -80,3 +80,4 @@ function fallback(q) {
   }
   return "I'm Kishore's portfolio assistant. Ask me about his skills (Python, React, Django, ML), projects, experience, or how to hire him!";
 }
+module.exports = handler;
