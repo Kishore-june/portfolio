@@ -49,8 +49,13 @@ app.get('/', (req, res) => {
 });
 
 // Fallback route - if no other routes match, serve index.html (for SPA)
-app.use((req, res) => {
-  res.sendFile(path.join(__dirname, 'index.html'));
+app.get('*', (req, res) => {
+  // Only serve index.html for navigation routes, not file requests
+  if (!req.path.includes('.')) {
+    res.sendFile(path.join(__dirname, 'index.html'));
+  } else {
+    res.status(404).send('Not Found');
+  }
 });
 
 // Export for Vercel serverless — DO NOT use app.listen() on Vercel

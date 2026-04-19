@@ -4,7 +4,7 @@
     { "src": "server.js", "use": "@vercel/node" }
   ],
   "routes": [
-    { "src": "/(.*\\.(css|js|jpg|png|gif|svg|webp|ico|woff|woff2|pdf|txt|html))$", "dest": "/$1" },
+    { "src": "/api/(.*)", "dest": "server.js" },
     { "src": "/(.*)", "dest": "server.js" }
   ]
 }
