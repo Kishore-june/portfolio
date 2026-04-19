@@ -43,6 +43,16 @@ app.post('/api/chat', async (req, res) => {
   }
 });
 
+// Root route handler - serves index.html
+app.get('/', (req, res) => {
+  res.sendFile(path.join(__dirname, 'index.html'));
+});
+
+// Fallback route - if no other routes match, serve index.html (for SPA)
+app.use((req, res) => {
+  res.sendFile(path.join(__dirname, 'index.html'));
+});
+
 // Export for Vercel serverless — DO NOT use app.listen() on Vercel
 // app.listen() is only for local development
 if (process.env.NODE_ENV !== 'production') {
