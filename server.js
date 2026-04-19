@@ -8,7 +8,7 @@ const port = process.env.PORT || 3000;
 
 app.use(cors());
 app.use(express.json());
-app.use(express.static(__dirname));
+app.use(express.static(path.join(__dirname, 'public')));
 
 // API Handlers
 // For contact.js (CommonJS)
@@ -45,14 +45,14 @@ app.post('/api/chat', async (req, res) => {
 
 // Root route handler - serves index.html
 app.get('/', (req, res) => {
-  res.sendFile(path.join(__dirname, 'index.html'));
+  res.sendFile(path.join(__dirname, 'public', 'index.html'));
 });
 
 // SPA Fallback - serve index.html for unmatched navigation routes
 app.use((req, res, next) => {
   // If request path has no file extension, treat as SPA navigation
   if (!req.path.includes('.') && !req.path.startsWith('/api')) {
-    res.sendFile(path.join(__dirname, 'index.html'));
+    res.sendFile(path.join(__dirname, 'public', 'index.html'));
   } else {
     next();  // Let express.static or 404 handler take over
   }
