@@ -48,15 +48,19 @@ app.get('/', (req, res) => {
   res.sendFile(path.join(__dirname, 'index.html'));
 });
 
-// Fallback route - if no other routes match, serve index.html (for SPA)
-// Use regex pattern instead of '*' to avoid path-to-regexp parsing errors
-app.get(/.*/, (req, res) => {
-  // Only serve index.html for navigation routes, not file requests
-  if (!req.path.includes('.')) {
+// SPA Fallback - serve index.html for unmatched navigation routes
+app.use((req, res, next) => {
+  // If request path has no file extension, treat as SPA navigation
+  if (!req.path.includes('.') && !req.path.startsWith('/api')) {
     res.sendFile(path.join(__dirname, 'index.html'));
   } else {
-    res.status(404).send('Not Found');
+    next();  // Let express.static or 404 handler take over
   }
+});
+
+// Final 404 handler for files not found
+app.use((req, res) => {
+  res.status(404).json({ error: 'Not found' });
 });
 
 // Export for Vercel serverless — DO NOT use app.listen() on Vercel
