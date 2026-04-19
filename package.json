@@ -3,7 +3,7 @@
   "version": "2.0.0",
   "description": "Portfolio of Kishore S",
   "engines": {
-    "node": "20.x"
+    "node": "24.x"
   },
   "main": "server.js",
   "scripts": {
