@@ -2,11 +2,12 @@ const express = require('express');
 const path = require('path');
 require('dotenv').config();
 const cors = require('cors');
+
 const app = express();
 const port = process.env.PORT || 3000;
 
-app.use(express.json());
 app.use(cors());
+app.use(express.json());
 app.use(express.static(__dirname));
 
 // API Handlers
@@ -42,6 +43,12 @@ app.post('/api/chat', async (req, res) => {
   }
 });
 
-app.listen(port, () => {
-  console.log(`Portfolio project running at http://localhost:${port}`);
-});
+// Export for Vercel serverless — DO NOT use app.listen() on Vercel
+// app.listen() is only for local development
+if (process.env.NODE_ENV !== 'production') {
+  app.listen(port, () => {
+    console.log(`Running locally at http://localhost:${port}`);
+  });
+}
+
+module.exports = app;
