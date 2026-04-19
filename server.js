@@ -49,7 +49,8 @@ app.get('/', (req, res) => {
 });
 
 // Fallback route - if no other routes match, serve index.html (for SPA)
-app.get('*', (req, res) => {
+// Use regex pattern instead of '*' to avoid path-to-regexp parsing errors
+app.get(/.*/, (req, res) => {
   // Only serve index.html for navigation routes, not file requests
   if (!req.path.includes('.')) {
     res.sendFile(path.join(__dirname, 'index.html'));
